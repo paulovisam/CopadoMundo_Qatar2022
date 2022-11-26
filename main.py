@@ -4,9 +4,9 @@ from scipy.stats import poisson
 import streamlit as st
 
 #Importando Dados
-selecoes = pd.read_excel('dados\DadosCopaDoMundoQatar2022.xlsx', sheet_name='selecoes', index_col=0)
-jogos = pd.read_excel('dados\DadosCopaDoMundoQatar2022.xlsx', sheet_name='jogos')
-jogoscopa = pd.read_excel('dados/outputEstimativasJogosCopa.xlsx', index_col = 0)
+selecoes = pd.read_excel('dados//DadosCopaDoMundoQatar2022.xlsx', sheet_name='selecoes', index_col=0)
+jogos = pd.read_excel('dados//DadosCopaDoMundoQatar2022.xlsx', sheet_name='jogos')
+jogoscopa = pd.read_excel('dados//outputEstimativasJogosCopa.xlsx', index_col = 0)
 
 # Transformação linear para uma escala de 0.15 até 1
 fifa = selecoes['PontosRankingFIFA'] #Lista de seleções e score
