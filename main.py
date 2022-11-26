@@ -108,44 +108,42 @@ def probabilidade_partida(time1, time2):
     }
     return output
 
-print(probabilidade_partida('Suíça', 'Brasil'))
+### PAGINA USANDO STREAMLIT
+st.set_page_config(
+    page_title = 'Estatisticas - Jogos da Copa do Mundo',
+    page_icon = '🏆',
+)
 
+st.markdown("# 🏆 Copa do Mundo - Qatar 2022")
+st.markdown("## ⚽ Probabilidades das Partidas")
+st.markdown('---')
 
-# st.set_page_config(
-#     page_title = 'Predições de Jogos da Copa do Mundo',
-#     page_icon = '🏆',
-# )
+lista_times1 = selecoes.index.tolist()
+lista_times1.sort()
+lista_times2 = lista_times1.copy()
 
-# st.markdown("# 🏆 Copa do Mundo - Qatar 2022")
-# st.markdown("## ⚽ Probabilidades das Partidas")
-# st.markdown('---')
+column1, column2 = st.columns(2)
+time1 = column1.selectbox('Escolha primeiro time:', lista_times1)
+lista_times2.remove(time1)
+time2 = column2.selectbox('Escolha segundo time:', lista_times2, index=1)
 
-# lista_times1 = selecoes.index.tolist()
-# lista_times1.sort()
-# lista_times2 = lista_times1.copy()
+simulacao = probabilidade_partida(time1, time2)
+prob = simulacao['probabilidades']
+matriz = simulacao['matriz']
 
-# column1, column2 = st.columns(2)
-# time1 = column1.selectbox('Escolha primeiro time:', lista_times1)
-# lista_times2.remove(time1)
-# time2 = column2.selectbox('Escolha segundo time:', lista_times2, index=1)
+col1, col2, col3, col4, col5 = st.columns(5)
+col1.image(selecoes.loc[time1, 'LinkBandeiraGrande'])
+col2.metric(time1, prob[0])
+col3.metric('Empate', prob[1])
+col4.metric(time2, prob[2])
+col5.image(selecoes.loc[time2, 'LinkBandeiraGrande'])
 
-# simulacao = probabilidade_partida(time1, time2)
-# prob = simulacao['probabilidades']
-# matriz = simulacao['matriz']
+st.markdown('---')
+st.markdown("## 📊 Probabilidades dos Placares")
+st.table(matriz)
 
-# col1, col2, col3, col4, col5 = st.columns(5)
-# col1.image(selecoes.loc[time1, 'LinkBandeiraGrande'])
-# col2.metric(time1, prob[0])
-# col3.metric('Empate', prob[1])
-# col4.metric(time2, prob[2])
-# col5.image(selecoes.loc[time2, 'LinkBandeiraGrande'])
-
-# st.markdown('---')
-# st.markdown("## 📊 Probabilidades dos Placares")
-# st.table(matriz)
-
-# st.markdown('---')
-# st.markdown("## 🌍 Probabilidades dos Jogos da Copa")
-# st.table(jogoscopa[['grupo', 'seleção1', 'seleção2', 'Vitória', 'Empate', 'Derrota']])
+st.markdown('---')
+st.markdown("## 🌍 Probabilidades dos Jogos da Copa")
+st.table(jogoscopa[['grupo', 'seleção1', 'seleção2', 'Vitória', 'Empate', 'Derrota']])
 
 
