@@ -123,9 +123,9 @@ lista_times1.sort()
 lista_times2 = lista_times1.copy()
 
 column1, column2 = st.columns(2)
-time1 = column1.selectbox('Escolha primeiro time:', lista_times1)
+time1 = column1.selectbox('Escolha o primeiro time:', lista_times1)
 lista_times2.remove(time1)
-time2 = column2.selectbox('Escolha segundo time:', lista_times2, index=1)
+time2 = column2.selectbox('Escolha o segundo time:', lista_times2, index=1)
 
 simulacao = probabilidade_partida(time1, time2)
 prob = simulacao['probabilidades']
@@ -146,4 +146,5 @@ st.markdown('---')
 st.markdown("## 🌍 Probabilidades dos Jogos da Copa")
 st.table(jogoscopa[['grupo', 'seleção1', 'seleção2', 'Vitória', 'Empate', 'Derrota']])
 
-
+st.markdown('---')
+st.markdown('Desenvolvido :heart: por [Paulo Sampaio](https://github.com/paulovisam) :wave:')
