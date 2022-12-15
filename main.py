@@ -108,7 +108,6 @@ def probabilidade_partida(time1, time2):
     }
     return output
 
-print(probabilidade_partida('Portugal', ''))
 ### PAGINA USANDO STREAMLIT
 # st.set_page_config(
 #     page_title = 'Estatisticas - Jogos da Copa do Mundo',
