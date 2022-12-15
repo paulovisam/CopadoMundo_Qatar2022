@@ -19,10 +19,10 @@ forca = fifa*c_ang + c_lin
 def media_gols(selecao1, selecao2):
     # Calcular média de gols
     # 2018 -> 2.64
-    # 2022 -> 2.53
+    # 2022 -> 2.63
     forca1 = forca[selecao1]
     forca2 = forca[selecao2]
-    media_gols = 2.53
+    media_gols = 2.63
     l1 = media_gols*forca1/(forca1 + forca2)
     l2 = media_gols - l1
     return [l1, l2]
@@ -108,43 +108,44 @@ def probabilidade_partida(time1, time2):
     }
     return output
 
+print(probabilidade_partida('Portugal', ''))
 ### PAGINA USANDO STREAMLIT
-st.set_page_config(
-    page_title = 'Estatisticas - Jogos da Copa do Mundo',
-    page_icon = '🏆',
-)
+# st.set_page_config(
+#     page_title = 'Estatisticas - Jogos da Copa do Mundo',
+#     page_icon = '🏆',
+# )
 
-st.markdown("# 🏆 Copa do Mundo - Qatar 2022")
-st.markdown("## ⚽ Probabilidades das Partidas")
-st.markdown('---')
+# st.markdown("# 🏆 Copa do Mundo - Qatar 2022")
+# st.markdown("## ⚽ Probabilidades das Partidas")
+# st.markdown('---')
 
-lista_times1 = selecoes.index.tolist()
-lista_times1.sort()
-lista_times2 = lista_times1.copy()
+# lista_times1 = selecoes.index.tolist()
+# lista_times1.sort()
+# lista_times2 = lista_times1.copy()
 
-column1, column2 = st.columns(2)
-time1 = column1.selectbox('Escolha o primeiro time:', lista_times1)
-lista_times2.remove(time1)
-time2 = column2.selectbox('Escolha o segundo time:', lista_times2, index=1)
+# column1, column2 = st.columns(2)
+# time1 = column1.selectbox('Escolha o primeiro time:', lista_times1)
+# lista_times2.remove(time1)
+# time2 = column2.selectbox('Escolha o segundo time:', lista_times2, index=1)
 
-simulacao = probabilidade_partida(time1, time2)
-prob = simulacao['probabilidades']
-matriz = simulacao['matriz']
+# simulacao = probabilidade_partida(time1, time2)
+# prob = simulacao['probabilidades']
+# matriz = simulacao['matriz']
 
-col1, col2, col3, col4, col5 = st.columns(5)
-col1.image(selecoes.loc[time1, 'LinkBandeiraGrande'])
-col2.metric(time1, prob[0])
-col3.metric('Empate', prob[1])
-col4.metric(time2, prob[2])
-col5.image(selecoes.loc[time2, 'LinkBandeiraGrande'])
+# col1, col2, col3, col4, col5 = st.columns(5)
+# col1.image(selecoes.loc[time1, 'LinkBandeiraGrande'])
+# col2.metric(time1, prob[0])
+# col3.metric('Empate', prob[1])
+# col4.metric(time2, prob[2])
+# col5.image(selecoes.loc[time2, 'LinkBandeiraGrande'])
 
-st.markdown('---')
-st.markdown("## 📊 Probabilidades dos Placares")
-st.table(matriz)
+# st.markdown('---')
+# st.markdown("## 📊 Probabilidades dos Placares")
+# st.table(matriz)
 
-st.markdown('---')
-st.markdown("## 🌍 Probabilidades dos Jogos da Copa")
-st.table(jogoscopa[['grupo', 'seleção1', 'seleção2', 'Vitória', 'Empate', 'Derrota']])
+# st.markdown('---')
+# st.markdown("## 🌍 Probabilidades dos Jogos da Copa")
+# st.table(jogoscopa[['grupo', 'seleção1', 'seleção2', 'Vitória', 'Empate', 'Derrota']])
 
-st.markdown('---')
-st.markdown('Desenvolvido :heart: por [Paulo Sampaio](https://github.com/paulovisam) :wave:')
+# st.markdown('---')
+# st.markdown('Desenvolvido :heart: por [Paulo Sampaio](https://github.com/paulovisam) :wave:')

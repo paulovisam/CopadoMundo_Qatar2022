@@ -3,7 +3,7 @@
 
 Modelagem estatística para predição de resultado da Copa do Mundo 2022 usando distribuição de Poisson.
 Para alimetar o projeto foi usado os dados do **[Ranking FIFA](https://www.fifa.com/fifa-world-ranking/men?dateId=id13792)** e uma
-média de gols por partida do campeonado de [2.58](https://futdados.com/media-de-gols-copas-do-mundo/).
+média de gols por partida do campeonado de [2.63](https://futdados.com/media-de-gols-copas-do-mundo/).
 
 ### 📋 Pré-requisitos
 ```bash
